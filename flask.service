@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=skypro
 WorkingDirectory=/home/skypro/simple_flask
-ExecStart=/home/skypro/simple_flask/venv/bin/gunicorn -b localhost:8000 -w 4 app:app
+ExecStart=/home/skypro/simple_flask/venv/bin/gunicorn -b localhost:80 -w 4 app:app
 Restart=always
 
 [Install]
