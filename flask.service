@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask service
+After=network.target
+
+[Service]
+User=skypro
+WorkingDirectory=/home/skypro/simple_flask
+ExecStart=/home/skypro/simple_flask/venv/bin/gunicorn -b localhost:8000 -w 4 microblog:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
