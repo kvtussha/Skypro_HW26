@@ -24,14 +24,15 @@ jobs:
         uses: actions/checkout@v3
       - name: render configs
         run: |
-          cat deploy/docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
+          mkdir  deploy_ci
+          cat deploy/docker-compose-ci.yaml | envsubst > deploy_ci/docker-compose.yaml
       - name: copy files to server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "deploy/docker-compose.yaml"
+          source: "deploy_ci/docker-compose.yaml"
           target: "flask_ci"
           strip_components: 1
       - name: deploy app
