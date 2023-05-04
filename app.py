@@ -5,7 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 
 app = Flask("app")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://flask_app:flask_app_password@pg:5432/flask_app"
+app.config.from_pyfile("default_config.py")
+app.config.from_pyfile("APP_SETTINGS", silent=True)
 
 db = SQLAlchemy(app)
 

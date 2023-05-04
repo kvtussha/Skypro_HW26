@@ -1,7 +1,12 @@
 FROM python:3.10-slim
 
-WORKDIR /opt
-COPY app .
-RUN pip install -r requrements.txt
+WORKDIR /code
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+COPY docker_config.py default_config.py
 
-CMD gunicorn --bind 0.0.0.0:5000 app:app
+
+CMD flask run -h 0.0.0.0 -p 80
+
+
