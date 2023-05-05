@@ -1,1 +1,0 @@
-SQLALCHEMY_DATABASE_URI = "postgresql://skypro_user:skypro_password@pg/skypro_hw"
