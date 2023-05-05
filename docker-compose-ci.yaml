@@ -2,8 +2,6 @@ version: "3.9"
 
 services:
   api:
-    build:
-      context: .
     image: katyssha/skypro_hw26:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
       - 80:80
@@ -15,9 +13,9 @@ services:
   pg:
     image: postgres:latest
     environment:
-      POSTGRES_USER: skypro_user
-      POSTGRES_PASSWORD: skypro_password
-      POSTGRES_DB: skypro_hw
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: $DB_NAME
     volumes:
       - ./pg_data:/var/lib/postgresql/data
     healthcheck:
